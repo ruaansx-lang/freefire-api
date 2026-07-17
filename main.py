@@ -5,18 +5,13 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {
-        "status": "API Free Fire online"
-    }
+    return {"status":"API Free Fire online"}
 
 @app.get("/player")
 def player(uid: str):
 
-    url = f"https://freefireinfo-zy9l.onrender.com/api/v1/player-profile?uid={uid}&server=BR"
+    url = f"https://free-ff-api-src-5plp.onrender.com/api/v1/account?region=BR&uid={uid}"
 
     resposta = requests.get(url)
 
-    return {
-        "status_api_externa": resposta.status_code,
-        "resposta": resposta.text
-    }
+    return resposta.json()
