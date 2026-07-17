@@ -16,4 +16,7 @@ def player(uid: str):
 
     resposta = requests.get(url)
 
-    return resposta.json()
+    return {
+        "status_api_externa": resposta.status_code,
+        "resposta": resposta.text
+    }
